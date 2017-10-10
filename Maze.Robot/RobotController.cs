@@ -31,14 +31,13 @@ namespace Maze.Solver {
         public void MoveRobotToExit() {
             robot.ReachedExit += (_, __) => reachedEnd = true;
 
-            moveOut(0, 0);
+            moveOut();
             if (!reachedEnd) robot.HaltAndCatchFire();
         }
 
 
-        private void moveOut(int x, int y) {
-            if (!reachedEnd && !visited.Contains((x, y))) {
-                visited.Add((x, y));
+        private void moveOut(int x=0, int y=0) {
+            if (!reachedEnd && visited.Add((x, y))) {
 
                 if (robot.TryMove(Direction.Right)) {
                     moveOut(x + 1, y);
