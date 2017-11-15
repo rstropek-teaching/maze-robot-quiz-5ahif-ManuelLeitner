@@ -6,6 +6,7 @@ namespace Maze.Solver {
 
         private IRobot robot;
 
+        // Nice, I like the use of tuples here.
         private ISet<(int x, int y)> visited = new HashSet<(int x, int y)>();
         private bool reachedEnd = false;
 
@@ -35,7 +36,7 @@ namespace Maze.Solver {
             if (!reachedEnd) robot.HaltAndCatchFire();
         }
 
-
+        // Tip: In C#, member names should start with uppercase letters
         private void moveOut(int x=0, int y=0) {
             if (!reachedEnd && visited.Add((x, y))) {
 
